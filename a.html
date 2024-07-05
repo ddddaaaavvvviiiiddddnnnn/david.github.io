@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            // Prompting the user to enter a number between 1 and 7
+        let dayNumber = parseInt(prompt("Enter a number between 1 and 7:"));
+
+        // Using a switch statement to print the corresponding day of the week
+        switch (dayNumber) {
+        case 1:
+        console.log("Sunday");
+        break;
+        case 2:
+        console.log("Monday");
+        break;
+        case 3:
+        console.log("Tuesday");
+        break;
+        case 4:
+        console.log("Wednesday");
+        break;
+        case 5:
+        console.log("Thursday");
+        break;
+        case 6:
+        console.log("Friday");
+        break;
+        case 7:
+        console.log("Saturday");
+        break;
+        default:
+        console.log("Invalid input. Please enter a number between 1 and 7.");
+        break;
+        }
+        // Printing the first 10 natural numbers
+        for (let i = 1; i <= 10; i++) {
+        console.log(i);
+        }
+        do {
+        var userInput = prompt("Please enter a number:");
+        var number = parseFloat(userInput);
+        } while (isNaN(number) || number <= 100);
+
+        console.log("You entered a number greater than 100."); 
+
+        var i = 1;
+       do {
+       console.log(i);
+       i++;
+       } while (i <= 5);
+       
+       for (var i = 1; i <= 10; i++) {
+     if (i === 7) {
+        break; // Stops the loop if the number is 7
+     } 
+     if (i % 3 === 0) {
+        continue; // Skips multiples of 3
+      }
+      console.log(i);
+      }
+
+        </script>
+    </body>
+</html>

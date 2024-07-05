@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Eligibility</title>
+    <script type="text/javascript">
+        function checkEligibility(age, experience) {
+            // Eligibility criteria: age must be 21 or above and must have experience
+            if (age >= 21 && experience === "eligible") {
+                return "Eligible to work";
+            } else {
+                return "Not eligible to work";
+            }
+        }
+
+        function validateForm() {
+            var age = parseInt(document.getElementById('age').value);
+            var experience = document.getElementById('experience').value;
+
+            var result = checkEligibility(age, experience);
+
+            // Display result
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Check Eligibility</h2>
+    <form onsubmit="return false;">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="experience">Experience:</label>
+        <select id="experience" name="experience" required>
+            <option value="">Select</option>
+            <option value="eligible">Eligible</option>
+            <option value="not_eligible">Not Eligible</option>
+        </select><br><br>
+
+        <button type="button" onclick="validateForm()">Check Eligibility</button>
+    </form>
+
+    <p id="result"></p>
+</body>
+</html>

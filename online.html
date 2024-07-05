@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Example</title>
+    <script type="text/javascript">
+        function getValue(){
+            var retVal = prompt("Enter your name:", "David"); // Prompting user for input
+            if (retVal !== null) {  // Check if user clicked OK or Cancel
+                document.write("You have entered: " + retVal); // Displaying input on the page
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getValue()">Click to Enter Name</button>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello World!";
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculate Sphere Volume</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  form {
+    margin-top: 50px;
+  }
+  input[type="number"] {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <h2>Calculate Volume of a Sphere</h2>
+  <form id="volumeForm">
+    <label for="radius">Enter the radius of the sphere:</label><br>
+    <input type="number" id="radius" name="radius" step="any" required><br><br>
+    <button type="submit">Calculate Volume</button>
+  </form>
+  
+  <div id="result" style="margin-top: 20px;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

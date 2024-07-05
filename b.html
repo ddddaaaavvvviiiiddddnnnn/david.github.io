@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            // Prompt the user to enter a number
+        let userInput = prompt("Please enter a number:");
+
+        // Convert the user input to a number
+        let number = Number(userInput);
+
+        // Check if the number is positive
+        if (number > 0) {
+        console.log("The number is positive.");
+        } else {
+        console.log("The number is not positive.");
+        }
+
+        // Prompting the user to enter their marks
+        let marks = parseFloat(prompt("Enter your marks (0-100):"));
+
+        // Using else if statements to determine the grade
+        let grade;
+        if (marks >= 90) {
+        grade = "A";
+        } else if (marks >= 80) {
+        grade = "B";
+        } else if (marks >= 70) {
+        grade = "C";
+        } else if (marks >= 60) {
+        grade = "D";
+        } else {
+        grade = "F";
+        }
+
+        // Printing the grade
+        console.log("Your grade is: " + grade);
+
+        // Prompt the user to enter a number
+        let num = parseInt(prompt("Enter a number:"));
+
+        // Use an if-else statement to check if the number is even or odd
+        if (number % 2 === 0) {
+        // If the number is even
+        console.log("The number is even.");
+        } else {
+        // If the number is odd
+        console.log("The number is odd.");
+        }
+        
+
+        </script>
+    </body>
+</html>

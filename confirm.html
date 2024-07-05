@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confirm Dialog Example</title>
+  <script>
+    function askConfirmation() {
+      var result = confirm("Are you sure you want to delete this item?");
+      if (result) {
+        alert("Item deleted successfully!");
+      } else {
+        alert("Delete canceled.");
+      }
+    }
+  </script>
+</head>
+<body>
+
+<button onclick="askConfirmation()">Click to delete item</button>
+
+</body>
+</html>

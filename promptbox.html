@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="confirm.html">
+  <title>Prompt Dialog Example</title>
+  <script>
+    function askName() {
+      var name = prompt("Please enter your name:", "John Doe");
+      if (name != null && name != "") {
+        alert("Hello, " + name + "! Welcome to our website.");
+      } else {
+        alert("You did not enter your name. Please try again.");
+      }
+    }
+  </script>
+</head>
+<body>
+
+<button onclick="askName()">Click to enter your name</button>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Checker</title>
+    <style>
+        body {
+            background-color: aqua;
+            color: #ff3bc1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        label, input, button {
+            font-size: 1.2em;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff3bc1;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e033a1;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+    <script>
+        function checkTemperature() {
+            // Get the temperature value from the input field
+            let temperature = document.getElementById('temperature').value;
+
+            // Convert the input to a number
+            temperature = Number(temperature);
+
+            // Initialize the message variable
+            let message = '';
+
+            // Determine the message based on the temperature
+            if (temperature > 30) {
+                message = "It's hot!";
+            } else if (temperature >= 20 && temperature <= 30) {
+                message = "It's warm!";
+            } else if (temperature < 20) {
+                message = "It's cold!";
+            }
+
+            // Display the message in the result div
+            document.getElementById('result').innerText = message;
+        }
+    </script>
+</head>
+<body>
+    <h1>Temperature Checker</h1>
+    <label for="temperature">Enter temperature (°C):</label>
+    <input type="number" id="temperature" name="temperature">
+    <button onclick="checkTemperature()">Check Temperature</button>
+    <div id="result"></div>
+</body>
+</html>

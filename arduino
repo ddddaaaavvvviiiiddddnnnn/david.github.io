@@ -1,0 +1,16 @@
+vet_website/
+│
+├── index.html
+├── styles/
+│   └── style.css
+├── scripts/
+│   └── main.js
+├── server/
+│   ├── config.php
+│   ├── connect.php
+│   ├── add_pet.php
+│   └── get_pets.php
+├── assets/
+│   └── images/
+└── db/
+    └── setup.sql

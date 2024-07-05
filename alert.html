@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Selection Count</title>
+</head>
+<body>
+
+<select id="dropdown">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+  <option value="option4">Option 4</option>
+  <option value="option5">Option 5</option>
+</select>
+
+<button onclick="countSelected()">Count Selected Items</button>
+  <script>
+function countSelected() {
+  // Get the dropdown element
+  var dropdown = document.getElementById("dropdown");
+
+  // Initialize a counter for selected items
+  var count = 0;
+
+  // Loop through each option in the dropdown
+  for (var i = 0; i < dropdown.options.length; i++) {
+    // Check if the current option is selected
+    if (dropdown.options[i].selected) {
+      count++; // Increment the counter if selected
+    }
+  }
+
+  // Display the count in an alert window
+  alert("Number of selected items: " + count);
+}
+</script>
+</body>
+</html>
