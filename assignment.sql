@@ -1,25 +1,8 @@
--- Connect to your SQL Server instance using a sysadmin account
--- Grant CREATE DATABASE permission to a specific login
-USE master;
-GO
-GRANT CREATE ANY DATABASE TO [YourLoginName];
-GO
-
--- Check if the user has CREATE DATABASE permission
-SELECT princ.name, perm.permission_name, perm.state_desc
-FROM sys.server_permissions perm
-JOIN sys.server_principals princ
-ON perm.grantee_principal_id = princ.principal_id
-WHERE perm.permission_name = 'CREATE ANY DATABASE'
-AND princ.name = 'YourLoginName';
-
--- Create a new database
-CREATE DATABASE football;
-USE football;
-
+create database master;
+use master;
 -- Teams Table
 CREATE TABLE Teams (
-    TeamID INT PRIMARY KEY IDENTITY(1,1),
+    TeamID INT PRIMARY KEY AUTO_INCREMENT,
     TeamName VARCHAR(50) NOT NULL,
     City VARCHAR(50),
     Stadium VARCHAR(50)
@@ -27,7 +10,7 @@ CREATE TABLE Teams (
 
 -- Players Table
 CREATE TABLE Players (
-    PlayerID INT PRIMARY KEY IDENTITY(1,1),
+    PlayerID INT PRIMARY KEY AUTO_INCREMENT,
     PlayerName VARCHAR(50) NOT NULL,
     TeamID INT,
     Position VARCHAR(20),
@@ -37,7 +20,7 @@ CREATE TABLE Players (
 
 -- Matches Table
 CREATE TABLE Matches (
-    MatchID INT PRIMARY KEY IDENTITY(1,1),
+    MatchID INT PRIMARY KEY AUTO_INCREMENT,
     HomeTeamID INT,
     AwayTeamID INT,
     MatchDate DATE,
@@ -47,8 +30,7 @@ CREATE TABLE Matches (
 
 -- Goals Table
 CREATE TABLE Goals (
-    GoalID INT PRIMARY
-    KEY IDENTITY(1,1),
+    GoalID INT PRIMARY KEY AUTO_INCREMENT,
     MatchID INT,
     PlayerID INT,
     GoalTime TIME,
@@ -58,20 +40,19 @@ CREATE TABLE Goals (
 
 -- Coaches Table
 CREATE TABLE Coaches (
-    CoachID INT PRIMARY KEY IDENTITY(1,1),
+    CoachID INT PRIMARY KEY AUTO_INCREMENT,
     CoachName VARCHAR(50) NOT NULL,
     TeamID INT,
     ExperienceYears INT,
     FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
 );
-
 -- Inserting Records into Teams
 INSERT INTO Teams (TeamName, City, Stadium) VALUES 
 ('Manchester United', 'Manchester', 'Old Trafford'),
 ('Liverpool', 'Liverpool', 'Anfield'),
 ('Chelsea', 'London', 'Stamford Bridge'),
 ('Arsenal', 'London', 'Emirates Stadium'),
-('Manchester City', 'Manchester', 'Etihad Stadium'),
+('Manchester City', 'Manchester', 'Etihad Stadium')
 ('Tottenham', 'London', 'Tottenham Stadium');
 
 -- Inserting Records into Players
@@ -85,7 +66,17 @@ INSERT INTO Players (PlayerName, TeamID, Position, Age) VALUES
 ('Virgil van Dijk', 2, 'Defender', 29),
 ('Thiago Alcantara', 2, 'Midfielder', 29),
 ('Mohamed Salah', 2, 'Forward', 28),
-('Sadio Mane', 2, 'Forward', 28);
+('Sadio Mane', 2, 'Forward', 28),
+('Kepa Arrizabalaga', 3, 'Goalkeeper', 26),
+('Thiago Silva', 3, 'Defender', 36),
+('N'Golo Kante', 3, 'Midfielder', 29),
+('Mason Mount', 3, 'Midfielder', 22),
+('Timo Werner', 3, 'Forward', 24),
+('Bernd Leno', 4, 'Goalkeeper', 28),
+('David Luiz', 4, 'Defender', 33),
+('Thomas Partey', 4, 'Midfielder', 27),
+('Pierre-Emerick Aubameyang', 4, 'Forward', 31),
+('Bukayo Saka', 4, 'Forward', 19);
 
 -- Inserting Records into Matches
 INSERT INTO Matches (HomeTeamID, AwayTeamID, MatchDate) VALUES 
@@ -115,14 +106,12 @@ INSERT INTO Coaches (CoachName, TeamID, ExperienceYears) VALUES
 ('Thomas Tuchel', 3, 15),
 ('Mikel Arteta', 4, 5),
 ('Pep Guardiola', 5, 25);
-
 -- Retrieve all teams and their coaches
 SELECT Teams.TeamName, Coaches.CoachName
 FROM Teams
 JOIN Coaches ON Teams.TeamID = Coaches.TeamID;
 
 -- Retrieve all players and their teams
-
 SELECT Players.PlayerName, Teams.TeamName
 FROM Players
 JOIN Teams ON Players.TeamID = Teams.TeamID;
@@ -143,53 +132,3 @@ WHERE g.MatchID = 1;
 -- Retrieve the list of players with their age and position
 SELECT PlayerName, Age, Position
 FROM Players;
-
--- Corrected query to retrieve all players and their teams
---INNER JOIN
-SELECT * 
-from Teams 
-INNER JOIN Players ON Teams.TeamID = Players.TeamID;
-
---NATURAL JOIN
-SELECT * 
-FROM Teams 
-NATURAL JOIN Players;
-
---LEFT OUTER JOIN
-SELECT *
-FROM Teams 
-LEFT OUTER JOIN Players ON Teams.TeamID = Players.TeamID;
-
---RIGHT OUTER JOIN
-SELECT *
-FROM Teams 
-RIGHT OUTER JOIN Players ON Teams.TeamID = Players.TeamID;
-
---FULL OUTER JOIN
-SELECT *
-FROM Teams 
-FULL OUTER JOIN Players ON Teams.TeamID = Players.TeamID;
-
---LEFT JOIN EXCLUDING INNER JOIN
-SELECT *
-FROM Teams 
-LEFT JOIN Players ON Teams.TeamID = Players.TeamID
-WHERE Players.TeamID IS NULL;
-
---Right Join Excluding Inner Join
-SELECT *
-FROM Teams 
-RIGHT JOIN Players ON Teams.TeamID = Players.TeamID
-WHERE Teams.TeamID IS NULL;
-
---Full Outer Excluding Inner Join
-SELECT *
-FROM Teams 
-FULL OUTER JOIN Players ON Teams.TeamID = Players.TeamID
-WHERE Teams.TeamID IS NULL;
-
---Cross Join
-SELECT *
-FROM Teams 
-CROSS JOIN Players 
-SELECT Teams.TeamID = Players.TeamID;
